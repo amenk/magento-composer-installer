@@ -208,7 +208,7 @@ abstract class DeploystrategyAbstract
             }
 
             // Source file isn't a valid file or glob
-            throw new \ErrorException("Source $sourcePath does not exists");
+            echo "WARNING: Source $sourcePath does not exists" . PHP_EOL; // @FIXME: we should use something like $output->writeln('<warning>...</warning'>) but do not have an output interface here...
         }
         return $this->createDelegate($source, $dest);
     }
@@ -240,7 +240,9 @@ abstract class DeploystrategyAbstract
             }
 
             // Source file isn't a valid file or glob
-            throw new \ErrorException("Source $sourcePath does not exists");
+
+            // throw new \ErrorException("Source $sourcePath does not exists");
+            echo "WARNING: Source $sourcePath does not exists" . PHP_EOL; // @FIXME: we should use something like $output->writeln('<warning>...</warning'>) but do not have an output interface here...
         }
 
         return self::rmdirRecursive($destPath);
